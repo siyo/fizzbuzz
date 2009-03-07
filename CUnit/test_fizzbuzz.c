@@ -7,8 +7,8 @@
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
 
-static int setup_fizzbuzz();
-static int teardown_fizzbuzz();
+static int setup();
+static int teardown();
 static void test_normal();
 
 CU_TestInfo test_fizzbuzz_array[] = {
@@ -17,18 +17,18 @@ CU_TestInfo test_fizzbuzz_array[] = {
 };
 
 CU_SuiteInfo suites_array[] = {
-  {"test_fizzbuzz",setup_fizzbuzz,teardown_fizzbuzz,test_fizzbuzz_array},
+  {"test_fizzbuzz",setup,teardown,test_fizzbuzz_array},
   CU_SUITE_INFO_NULL
 };
 
 static int
-setup_fizzbuzz()
+setup()
 {
   return 0;
 }
 
 static int
-teardown_fizzbuzz()
+teardown()
 {
   return 0;
 }
@@ -36,7 +36,7 @@ teardown_fizzbuzz()
 static void
 test_normal()
 {
-  unsigned i;
+  uint16_t i;
   for(i=0; i<UINT16_MAX; i++ ){
     switch(i%15){
       case 0:

@@ -4,7 +4,7 @@
 
 char* fizzbuzz(uint16_t n)
 {
-  static char buf[128];
+  static char buf[16];
 
   switch(n%15){
     case 0:
