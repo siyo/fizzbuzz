@@ -1,5 +1,3 @@
-vpath %.c test
-
 lib := libfizzbuzz.a
 src := fizzbuzz.c
 obj := $(subst .c,.o,$(src))
@@ -9,7 +7,7 @@ app_src :=  main.c
 app_obj := $(subst .c,.o,$(app_src))
 
 tester   := test_fizzbuzz
-test_src := $(notdir $(wildcard test/*.c))
+test_src := test_fizzbuzz.c
 test_obj := $(subst .c,.o,$(test_src))
 
 objs :=  $(obj) $(app_obj) $(test_obj)
