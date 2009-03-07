@@ -1,13 +1,33 @@
-exe    := fizzbuzz
-source := fizzbuzz.c
-obj    := $(subst .c,.o,$(source))
+vpath %.c test
 
-all : exe
+lib := libfizzbuzz.a
+src := fizzbuzz.c
+obj := $(subst .c,.o,$(src))
 
-exe : $(exe)
+app     := fizzbuzz
+app_src :=  main.c
+app_obj := $(subst .c,.o,$(app_src))
 
-$(exe) : $(obj)
+tester   := test_fizzbuzz
+test_src := $(notdir $(wildcard test/*.c))
+test_obj := $(subst .c,.o,$(test_src))
+
+objs :=  $(obj) $(app_obj) $(test_obj)
+
+all : $(app) $(lib)
+
+$(app) : $(app_obj) $(lib)
+
+$(lib) : $(obj)
+	$(AR) $(ARFLAGS) $@ $?
+
+.PHONY : check
+check: $(tester)
+	$(PWD)/$(tester)
+
+$(tester) : LDLIBS += -lcunit
+$(tester) : $(test_obj) $(lib)
 
 .PHONY : clean
 clean:
-	$(RM) $(obj) $(exe)
+	$(RM) $(objs) $(lib) $(exe) $(tester)

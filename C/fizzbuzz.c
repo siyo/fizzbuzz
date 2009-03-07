@@ -1,26 +1,27 @@
+#include <string.h>
 #include <stdio.h>
+#include "fizzbuzz.h"
 
-int main(void)
+char* fizzbuzz(uint16_t n)
 {
-  int i;
-  for(i=0; i<100; i++){
-    switch(i%15){
-      case 0:
-        puts("FizzBuzz");
-        break;
-      case 10:
-      case 5:
-        puts("Buzz");
-        break;
-      case 12:
-      case 9:
-      case 6:
-      case 3:
-        puts("Fizz");
-        break;
-      default:
-        printf("%d\n",i);
-    }
+  static char buf[128];
+
+  switch(n%15){
+    case 0:
+      strcpy(buf,"FizzBuzz");
+      break;
+    case 10:
+    case 5:
+      strcpy(buf,"Buzz");
+      break;
+    case 12:
+    case 9:
+    case 6:
+    case 3:
+      strcpy(buf,"Fizz");
+      break;
+    default:
+      sprintf(buf,"%d",n);
   }
-  return 0;
+  return buf;
 }
