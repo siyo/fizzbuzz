@@ -30,4 +30,4 @@ $(tester) : $(test_obj) $(lib)
 
 .PHONY : clean
 clean:
-	$(RM) $(objs) $(lib) $(exe) $(tester)
+	$(RM) $(objs) $(lib) $(app) $(tester)
