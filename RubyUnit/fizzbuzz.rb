@@ -1,6 +1,6 @@
 class Fixnum
   def fizzbuzz
-    raise "0 can't fizzbuz" if self == 0
+    raise "zero can't fizzbuz" if self == 0
     case self % 15
     when 0
       'FizzBuzz'
